@@ -1,16 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+//import {BrowserRouter} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import { createStore} from 'redux';
 import './index.css';
 import App from './App';
-import { HashRouter as Router} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import { HashRouter as Router} from 'react-router-dom'
+import reducer from './store/reducer';
+
+const store = createStore(reducer);
+
+const app = (
+  <Provider store={store}>
+    <Router>
+      <App/>
+    </Router>
+  </Provider>
+);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>,
+  app,
   document.getElementById('root')
 );
 
