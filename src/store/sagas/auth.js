@@ -39,7 +39,7 @@ export function* authUserSaga(action){
     yield put(actions.authSuccess(res.data.idToken,res.data.localId));
     yield put(actions.checkAuthTimeout(res.data.expiresIn));
     } catch(err){
-        yield put(action.authFailed(err.response.data.error));
+        yield put(actions.authFailed(err.response.data.error));
     }
 
 }
